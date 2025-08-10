@@ -1,1 +1,81 @@
+1. Prepare Your Backup Script
 
+You’ll need a script that does the backup.
+Example:
+
+#!/bin/bash
+# backup_and_restore.sh
+# Simple automated backup script
+
+# Variables
+SOURCE_DIR="/home/username/data"       # Folder to back up
+BACKUP_DIR="/home/username/backups"    # Where backups will be stored
+DATE=$(date +%F_%H-%M-%S)
+BACKUP_FILE="$BACKUP_DIR/backup_$DATE.tar.gz"
+
+# Create backup directory if it doesn't exist
+mkdir -p "$BACKUP_DIR"
+
+# Create backup
+tar -czf "$BACKUP_FILE" "$SOURCE_DIR"
+
+# Optional: Remove backups older than 14 days
+find "$BACKUP_DIR" -type f -mtime +14 -delete
+
+echo "Backup completed at $DATE"
+
+Make sure it’s executable:
+
+chmod +x backup_and_restore.sh
+
+2. Open Crontab
+
+Run:
+
+crontab -e
+
+3. Add the Cron Job
+
+To run the backup script every day at 2 AM, add:
+
+0 2 * * * /path/to/backup_and_restore.sh >> /var/log/backup.log 2>&1
+
+Format:
+
+MIN HOUR DOM MON DOW command
+
+    MIN = 0 → at minute 0
+
+    HOUR = 2 → at 2 AM
+
+    DOM = * → every day of month
+
+    MON = * → every month
+
+    DOW = * → every day of week
+
+4. Test the Job
+
+Run manually:
+
+/path/to/backup_and_restore.sh
+
+Check backup.log after cron runs.
+5. Recovery Automation (Optional)
+
+If you want a restore script, you can create something like:
+
+#!/bin/bash
+# restore_backup.sh
+BACKUP_FILE="$1"
+RESTORE_DIR="/home/username/data"
+
+if [ -z "$BACKUP_FILE" ]; then
+    echo "Usage: $0 backup_file.tar.gz"
+    exit 1
+fi
+
+tar -xzf "$BACKUP_FILE" -C "$RESTORE_DIR"
+echo "Restore completed from $BACKUP_FILE"
+
+Then you could even schedule restores for testing (like monthly recovery drills).
