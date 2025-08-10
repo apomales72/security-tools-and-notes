@@ -54,6 +54,38 @@ A step-by-step guide to effectively handle cybersecurity incidents.
 
 ---
 
+## 7. Tools Recommendation
+
+- **SIEM (Security Information and Event Management)**  
+  Examples: Splunk, Elastic Security, IBM QRadar, Microsoft Sentinel  
+  *Use for centralized log collection, correlation, and alerting.*
+
+- **Endpoint Detection and Response (EDR)**  
+  Examples: CrowdStrike Falcon, Carbon Black, Microsoft Defender for Endpoint  
+  *Monitor and investigate endpoint activities.*
+
+- **Network Traffic Analysis Tools**  
+  Examples: Wireshark, Zeek (Bro), NetFlow analyzers  
+  *Analyze network packets and traffic patterns.*
+
+- **Forensics Tools**  
+  Examples: Autopsy, FTK Imager, Volatility  
+  *Used for disk, memory analysis, and evidence collection.*
+
+- **Vulnerability Scanners**  
+  Examples: Nessus, OpenVAS, Qualys  
+  *Identify known vulnerabilities on systems.*
+
+- **Incident Management Platforms**  
+  Examples: TheHive, ServiceNow Security Operations  
+  *Track incidents and coordinate response efforts.*
+
+- **Communication Tools**  
+  Examples: Slack, Microsoft Teams (with secure channels), PagerDuty  
+  *Facilitate timely and secure communication within the team.*
+
+---
+
 ## Additional Resources
 - [NIST Computer Security Incident Handling Guide (SP 800-61)](https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-61r2.pdf)  
 - [SANS Incident Handler's Handbook](https://www.sans.org/reading-room/whitepapers/incident/incident-handlers-handbook-33901)  
@@ -62,4 +94,3 @@ A step-by-step guide to effectively handle cybersecurity incidents.
 
 *Prepared by [Your Name / Team]*  
 *Last updated: YYYY-MM-DD*
-
